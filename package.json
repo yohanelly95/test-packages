@@ -1,5 +1,5 @@
 {
-  "name": "test-packages",
+  "name": "@yohanelly95/test-packages",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -18,8 +18,5 @@
   "homepage": "https://github.com/yohanelly95/test-packages#readme",
   "publishConfig": {
     "@yohanelly95:registry": "https://npm.pkg.github.com"
-  }
-  "publishConfig": {
-    "registry":"https://npm.pkg.github.com/"
   }
 }
