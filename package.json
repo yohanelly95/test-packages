@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/yohanelly95/test-packages/issues"
   },
+  "publishConfig": {
+    "@yohanelly95:registry": "https://npm.pkg.github.com"
+  },
   "homepage": "https://github.com/yohanelly95/test-packages#readme"
 }
