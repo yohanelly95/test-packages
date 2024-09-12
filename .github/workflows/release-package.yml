@@ -23,7 +23,7 @@ jobs:
           exit 1
           fi
       - run: yarn install
-      - run: npm publish
+      - run: npm publish --access public
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
           NPM_TOKEN: ${{ secrets.PERSONAL_NPM }}
