@@ -27,7 +27,7 @@ jobs:
       - run: npm publish --dry-run
         env:
           NODE_AUTH_TOKEN: ${{ secrets.PERSONAL_NPM }}
-      - run: npm publish --access public
+      - run: npm publish --access public || npm publish --access public --scope=@cooldev
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.PERSONAL_NPM }}
