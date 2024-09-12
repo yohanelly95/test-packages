@@ -18,10 +18,7 @@ jobs:
       - run: yarn install
       - run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.PERSONAL_NPM }}" > ~/.npmrc
-          echo "NPM config list:"
-          npm config list
-          echo "NPM whoami:"
-          npm whoami || echo "Not authenticated"
+          npm whoami
 
       - run: npm publish --dry-run
         env:
