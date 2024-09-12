@@ -18,6 +18,8 @@ jobs:
       - run: yarn install
       - run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.PERSONAL_NPM }}" > ~/.npmrc
+          npm config list
+          echo "${{ secrets.PERSONAL_NPM }}" | npm login --auth-type=legacy --registry=https://registry.npmjs.org/ --scope=@cooldev
           npm whoami
 
       - run: npm publish --dry-run
