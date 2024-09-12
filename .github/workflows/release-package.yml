@@ -21,6 +21,8 @@ jobs:
           npm config list
           echo "${{ secrets.PERSONAL_NPM }}" | npm login --auth-type=legacy --registry=https://registry.npmjs.org/ --scope=@cooldev
           npm whoami
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.PERSONAL_NPM }}
 
       - run: npm publish --dry-run
         env:
