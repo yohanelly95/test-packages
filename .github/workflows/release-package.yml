@@ -23,6 +23,16 @@ jobs:
           exit 1
           fi
       - run: yarn install
+      - run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.PERSONAL_NPM }}" > ~/.npmrc
+          echo "NPM config list:"
+          npm config list
+          echo "NPM whoami:"
+          npm whoami || echo "Not authenticated"
+
+      - run: npm publish --dry-run
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.PERSONAL_NPM }}
       - run: npm publish --access public
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
