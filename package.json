@@ -1,8 +1,12 @@
 {
-  "name": "@yohanelly95/test-packages",
-  "version": "1.0.0",
+  "name": "@cooldev/test-packages",
+  "version": "2.0.0",
   "description": "",
   "main": "index.js",
+  "private": false,
+  "files": [
+    "index.js"
+  ],
   "scripts": {
     "test": "exit 0"
   },
@@ -15,8 +19,6 @@
   "bugs": {
     "url": "https://github.com/yohanelly95/test-packages/issues"
   },
-  "homepage": "https://github.com/yohanelly95/test-packages#readme",
-  "publishConfig": {
-    "@yohanelly95:registry": "https://npm.pkg.github.com"
-  }
+  "homepage": "https://github.com/yohanelly95/test-packages#readme"
 }
+
