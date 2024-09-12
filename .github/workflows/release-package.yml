@@ -1,33 +1,29 @@
-name: Node.js Package
+name: Release Package
 
 on:
-  release:
-    types: [created]
-
+  push:
+    tags:
+      - v*
 jobs:
-  build:
+  publish-npm-package:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          persist-credentials: false
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
-      - run: npm ci
-      - run: npm test
-
-  publish-gpr:
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      packages: write
-      contents: read
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          registry-url: https://npm.pkg.github.com/
-      - run: npm ci
+          node-version: "20"
+          registry-url: "https://registry.npmjs.org"
+      - run: |
+          PKG_VERSION=$(node -p "require('./package.json').version")
+          TAG_VERSION=${GITHUB_REF#refs/tags/v}
+          if [ "$PKG_VERSION" != "$TAG_VERSION" ]; then
+          echo "Package version ($PKG_VERSION) does not match tag version ($TAG_VERSION)"
+          exit 1
+          fi
+      - run: yarn install
       - run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.TOKEN}}
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          NPM_TOKEN: ${{ secrets.PERSONAL_NPM }}
