@@ -2,8 +2,8 @@ name: Release Package
 
 on:
   push:
-    tags:
-      - v*
+    branches:
+      - master
 jobs:
   publish-npm-package:
     runs-on: ubuntu-latest
